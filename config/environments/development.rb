@@ -39,6 +39,20 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+
+   config.action_mailer.smtp_settings = {
+     :address => "smtp.mandrillapp.com",
+     :port => "587",
+     # address: 'localhost',
+     # port: 1025,
+     :user_name => "wunderbird.ninja@gmail.com",
+     :password => "NS-82JLIlLHKV7E6eD4PUw",
+     :authentication => "plain",
+     :enable_starttls_auto => true
+   }
+
+  config.action_controller.asset_host = 'http://localhost:3000' # Locally
 
 end
