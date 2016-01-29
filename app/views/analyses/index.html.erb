@@ -1,0 +1,49 @@
+<!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header index-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Barecoin</h1>
+                        <hr class="small">
+                        <span class="subheading">Analysis for Crypto Punters</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+<!-- Main Content -->
+  <div class="container">
+    <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <% @analyses.each do |analysis| %>
+                <div class="post-preview">
+                    <!-- <a href="post.html"> -->
+                        <h2 class="post-title">
+                            <%= link_to "#{analysis.title}", analysis_path(analysis) %>
+                        </h2>
+                        <h3 class="post-subtitle">
+                            <%= analysis.subtitle %>
+                        </h3>
+                    <!-- </a> -->
+                    <p class="post-meta">Published <%= analysis.created_at.strftime('%d %B, %Y') %></p>
+                </div>
+                <hr>
+                <% end %>
+                
+               
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="next">
+                        <a href="#">Older Analyses &rarr;</a>
+                    </li>
+                </ul>
+             </div>   
+    </div>
+  </div>
+  
+
+  <hr>

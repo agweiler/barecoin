@@ -1,0 +1,65 @@
+ <header class="intro-header post-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1><%= @analysis.title %></h1>
+                        <h2 class="subheading"><%= @analysis.subtitle %></h2>
+                        <span class="meta">Published <%= @analysis.created_at.strftime('%d %B, %Y') %> </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <%= @analysis.content %>
+
+                    
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                    <p> Share the story! </p>
+                        <li>
+                            <a href="javascript:window.open('http://twitter.com/share?text=<%= @analysis.title %> by @agweiler - &amp;url=<%= url_for([@analysis, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:window.open('http://www.facebook.com/sharer.php?u=<%= url_for([@analysis, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:window.open('http://plus.google.com/share.php?u=<%= url_for([@analysis, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    <hr>
+
+    <%= link_to "Edit", edit_analysis_path(@analysis) %>
+    <%= link_to "Delete", analysis_path(@analysis), method: :delete, data: { confirm: "Sure you want to?"} %>
