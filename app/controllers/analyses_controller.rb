@@ -2,11 +2,18 @@ class AnalysesController < ApplicationController
 
    before_action :find_analysis, only: [:show, :edit, :update, :destroy]
   def index
-   @analyses = Analysis.all.order ('created_at DESC')
+   @analyses = Analysis.all.order('created_at DESC').paginate(page: params[:page], per_page: 2)
+   set_meta_tags title: 'News & Analysis',
+              description: 'Fundamental and Technical Analysis about Bitcoin and Etheruem',
+              keywords: 'Bitcoin, Ethereum, Ether, Technical, Fundamental, Analysis'
+ 
   end
 
   def new
     @analysis = Analysis.new
+
+    set_meta_tags noindex: true
+    set_meta_tags noindex: 'googlebot'
   end
 
   def create
@@ -24,6 +31,8 @@ class AnalysesController < ApplicationController
   end
 
   def edit
+    set_meta_tags noindex: true
+    set_meta_tags noindex: 'googlebot'
   end
 
   def update
@@ -37,13 +46,16 @@ class AnalysesController < ApplicationController
   def destroy
     @analysis.destroy
     redirect_to analyses_path
+
+    set_meta_tags noindex: true
+    set_meta_tags noindex: 'googlebot'
   end
 
 
   private
     
     def analysis_params
-      params.require(:analysis).permit(:title, :content, :subtitle)
+      params.require(:analysis).permit(:title, :content, :subtitle, :image)
     end 
 
     def find_analysis

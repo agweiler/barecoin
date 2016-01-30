@@ -17,8 +17,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <%= @post.content %>
-
+                <%= image_tag @post.image.url(:inpost) %>
+                <br>
+                <br>
+                <%= @post.content %>
+ 
                     
                 </div>
             </div>
@@ -39,7 +42,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:window.open('http://www.facebook.com/sharer.php?u=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">
+                            <a href="javascript:window.open('http://www.facebook.com/sharer/sharer.php?u=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
@@ -61,5 +64,7 @@
 
     <hr>
 
+<% if admin_signed_in? %>
     <%= link_to "Edit", edit_post_path(@post) %>
     <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Sure you want to?"} %>
+<% end %>

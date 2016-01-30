@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Barecoin</title>
+  <title>Barecoin - Cryptocurrency News and Analysis</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= display_meta_tags site: 'Barecoin - Cryptocurrency Trading News and Analysis' %>
+  <%= favicon_link_tag 'barecoin_fav.ico' %>
+
 
   <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -43,12 +46,20 @@
                     <li>
                         <a href="/contacts">Contact</a>
                     </li>
+                    <% if admin_signed_in? %>
+                    <li>
+                        <%= link_to('Logout', destroy_admin_session_path, :method => :delete, class: 'logout') %>        
+                    </li>
+                    <% end %>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+
+    <!-- <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
 
     <!-- Notices -->
 
@@ -106,7 +117,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Barecoin 2016</p>
+                    <p class="copyright text-muted">Copyright &copy; Barecoin Ltd. 2016</p>
                 </div>
             </div>
         </div>

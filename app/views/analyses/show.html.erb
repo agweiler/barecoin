@@ -17,6 +17,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <%= image_tag @analysis.image.url(:inpost) %>
+                    <br>
+                    <br>
                     <%= @analysis.content %>
 
                     
@@ -61,5 +64,9 @@
 
     <hr>
 
+    <% if admin_signed_in? %>
+
     <%= link_to "Edit", edit_analysis_path(@analysis) %>
     <%= link_to "Delete", analysis_path(@analysis), method: :delete, data: { confirm: "Sure you want to?"} %>
+
+    <% end %>

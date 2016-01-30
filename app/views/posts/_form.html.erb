@@ -1,33 +1,44 @@
- <%= form_for @post, html: { multipart: true } do |f| %>
-  <% if @post.errors.any? %>
-    <div id="errors">
-      <h2><%= pluralize(@post.errors.count, "error") %> prevented this post from saving:</h2>
-      <ul>
-        <% @post.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+ 
+<div class="container">
+
+   <%= form_for @post, html: { multipart: true } do |f| %>
+    <% if @post.errors.any? %>
+      <div id="errors">
+        <h2><%= pluralize(@post.errors.count, "error") %> prevented this post from saving:</h2>
+        <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control" %>
+    
+    <br>
+    <br>
+    
+    <%= f.label :subtitle %><br>
+    <%= f.text_field :subtitle, class: "form-control" %>
+    
+    <br>
+    <br>
+
+    <%= f.label :content %><br>
+    <%= f.text_area :content, class: "form-control", rows: "8" %>
+    
+    <br>
+    <br>
+
+    <%= f.label :image %><br>
+    <%= f.file_field :image, class: "form-control" %>
+
+    <br>
+    <br>
+
+    <%= f.submit "Publish", :class=> "btn btn-default" %>
   <% end %>
 
-
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
-  
-  <br>
-  <br>
-  
-  <%= f.label :subtitle %><br>
-  <%= f.text_field :subtitle %>
-  
-  <br>
-  <br>
-
-  <%= f.label :content %><br>
-  <%= f.text_area :content %>
-  
-  <br>
-  <br>
-
-  <%= f.submit "Publish" %>
-<% end %>
+</div>

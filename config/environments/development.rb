@@ -55,4 +55,6 @@ Rails.application.configure do
 
   config.action_controller.asset_host = 'http://localhost:3000' # Locally
 
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+
 end
